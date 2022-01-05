@@ -4,11 +4,15 @@
 
   <div class="all-title-box">
     <div class="container text-center">
+      <% if(user.role ==="student"){ %>
       <h1>
-        DASHBOARD<span class="m_1"
-          >Lorem Ipsum dolroin gravida nibh vel velit.</span
-        >
+        STUDENT DASHBOARD<span class="m_1">Welcome <%= user.name %></span>
       </h1>
+      <%}%> <% if(user.role ==="teacher"){ %>
+      <h1>
+        TEACHER DASHBOARD<span class="m_1">Welcome <%= user.name %></span>
+      </h1>
+      <%}%>
     </div>
   </div>
 
