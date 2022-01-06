@@ -7,6 +7,7 @@ const courseRoute = require("./routes/courseRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const userRoute = require("./routes/userRoute");
 const app = express();
+const flash = require("connect-flash");
 
 //Connect DB
 mongoose
@@ -42,6 +43,11 @@ app.use(
     store: MongoStore.create({ mongoUrl: "mongodb://localhost/smartedu-db" }),
   })
 );
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+});
 
 //Routes
 app.use("*", (req, res, next) => {

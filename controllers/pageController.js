@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+//const nodemailer = require("nodemailer");
 
 exports.getIndexPage = (req, res) => {
   console.log(req.session.userID);
@@ -57,5 +57,7 @@ exports.sendEmail = async (req, res) => {
   //   html: outputMessage,
   // });
   console.log(req.body);
-  res.redirect("/");
+  req.flash("success", "You message will be replied");
+
+  res.redirect("contact");
 };
