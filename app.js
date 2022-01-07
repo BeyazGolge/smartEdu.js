@@ -8,6 +8,7 @@ const categoryRoute = require("./routes/categoryRoute");
 const userRoute = require("./routes/userRoute");
 const app = express();
 const flash = require("connect-flash");
+const methodOverride = require("method-override");
 
 //Connect DB
 mongoose
@@ -48,6 +49,11 @@ app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
   next();
 });
+app.use(
+  methodOverride("_method", {
+    methods: ["POST", "GET"],
+  })
+);
 
 //Routes
 app.use("*", (req, res, next) => {
